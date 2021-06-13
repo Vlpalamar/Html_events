@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    *{margin: 0; padding: 0}
+    #main{margin-left: 30vw;}
+  </style>
+</head>
+<body>
+<div id="main">
+<p id="res" style="width: 7px; padding: 7px ;float: left;  border: 1px gray solid" >
+  0
+</p>
+  <input  id="buttonInc" style="float: left" type="button" value="^">
+  <br>
+  <input  id="buttonDec"style="float: left" type="button"value="v">
+</div>
+<br>
+<hr>
+
+
+<div id="colorBoxes">
+  <input type="button" id="refresh" value="addNew">
+</div>
+<br>
+<br>
+<br>
+<hr>
+<div>
+<div id="setColorBoxes">
+
+</div>
+  <br>
+  <p id="textToChange">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti facere facilis qui sapiente. Ab consectetur eos iusto natus nemo. Eligendi, maxime, quod! Ad aliquam assumenda consectetur corporis culpa cupiditate, distinctio doloribus ducimus ea eaque est fuga modi molestiae necessitatibus nemo nisi officiis, quae quas quos ratione similique tempora ut.
+  </p>
+</div>
+<script>
+  // task1
+  let buttonInc=document.getElementById('buttonInc')
+  let buttonDec=document.getElementById('buttonDec')
+  buttonInc.onclick= function () {document.getElementById('res').innerText++}
+  buttonDec.onclick= function () {document.getElementById('res').innerText--}
+
+
+  // task2
+  let colorBoxes= document.getElementById('colorBoxes')
+  function initBoxes()
+  {
+    let box= document.createElement('div')
+    box.style.width='30px'
+    box.style.height='30px'
+    box.style.margin='10px'
+    box.style.float='left'
+    box.style.backgroundColor='#' + (Math.random().toString(16) + '000000').substring(2,8).toUpperCase()
+    box.onclick=function (){ box.style.display='none'}
+    colorBoxes.append(box)
+  }
+  document.getElementById('refresh').onclick=function (){ initBoxes()}
+
+// task3
+  let colorBoxToChangeText=document.getElementById('setColorBoxes')
+let text=document.getElementById('textToChange')
+
+  function initColorToSetText()
+  {
+    for (let i=0;i<10;i++)
+    {
+      let box= document.createElement('div')
+      box.style.width='15px'
+      box.style.height='15px'
+      box.style.margin='1px'
+      box.style.float='left'
+      box.style.backgroundColor='#' + (Math.random().toString(16) + '000000').substring(2,8).toUpperCase()
+      box.onclick=function (){ text.style.color=box.style.backgroundColor}
+      colorBoxToChangeText.append(box)
+    }
+
+  }
+  initColorToSetText()
+
+</script>
+</body>
+</html>

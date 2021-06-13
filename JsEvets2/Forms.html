@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        ul{list-style: none}
+        .listEl{border: 1px solid gray; padding: 10px}
+        #forum{background: coral;width: 70%;height: 30%}
+        #mainForum{margin-top: 10%; }
+        #mainForum label,#mainForum button{ margin: 30px}
+        #mainForum input,#mainForum button{width: 70%}
+        #mainForum button{padding: 10px}
+    </style>
+</head>
+<body>
+<div id="forum">
+    <div>
+        <ul id="mainList">
+
+        </ul>
+    </div>
+    <div id="mainForum">
+
+        <form action="">
+            <label for="forumName">Your name:</label>
+            <input type="text" id="forumName">
+            <br>
+            <label for="forumMessage">Your Message:</label>
+            <input type="textAria" id="forumMessage">
+            <br>
+            <button id="makeForumBut" value="send">send</button>
+        </form>
+    </div>
+
+</div>
+
+    <script>
+
+ // выглядит ужасно, писал давно,лень переделывать, функции выполняет
+        document.getElementById('makeForumBut').onclick= function (event)
+        {
+            event.preventDefault();
+            let name= document.getElementById('forumName')
+            let message= document.getElementById('forumMessage')
+            let main=document.getElementById('mainList')
+            let li= document.createElement('li')
+            document.getElementById('mainList').appendChild(li)
+            let div1=document.createElement('div')
+            div1.setAttribute('class','listEl')
+            li.appendChild(div1)
+            let div2=document.createElement('div')
+            div2.setAttribute('class','listEl')
+            li.appendChild(div2)
+            div1.innerText=name.value
+            div1.style.borderBottom='dotted'
+            div2.style.borderTop='none'
+            div2.innerText=message.value
+            let date = new Date()
+            div1.style.textAlign='left'
+            let dateDiv=document.createElement('div')
+            dateDiv.style.textAlign='right'
+            dateDiv.innerText=date.toString().substr(0,21)
+            div1.append(dateDiv)
+            name.value=''
+            message.value=''
+        }
+
+    </script>
+</body>
+</html>
