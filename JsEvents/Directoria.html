@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<ul id="main">
+    <li >this PC
+      <ul>
+        <li >Local Disc(C:)
+          <ul>
+            <li>Program Files</li>
+            <li>Users</li>
+            <li>Windows
+              <ul> <li>new folder1</li>
+                 <li>new folder2</li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </li>
+        <br>
+        <li >Local Disc(D:)
+          <ul>
+            <li>New Folder 1</li>
+            <li>New Folder 2</li>
+            <li>New Folder 3</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+</ul>
+
+
+<script>
+//task2
+  document.getElementById('main').addEventListener('click',task)
+  function task(c)
+  {
+      //проверка на то что бы клик не работал в не положенных местах (все еще работает но уже лучше)
+    if (c.target.childNodes.length!==1&& c.target.children[0].innerText.substr(0,7)!=='this PC')
+    {
+      let children= c.target.children[0]
+            children.style.display= children.style.display==='none'?'block':'none'
+    }
+  }
+  //работает корректно если кликать по элементам списка
+
+
+</script>
+
+</body>
+</html>

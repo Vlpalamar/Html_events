@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+  tr td,tr th{border: 1px solid black; margin: 10px; padding: 10px}
+</style>
+<body>
+
+<div>
+<label for="month">Month:</label>
+<input id="month" type="text">
+
+<label for="year">Year:</label>
+<input id="year" type="text">
+<br>
+<input type="button" id='resBut'value="Generate">
+</div>
+
+
+<div id="res"></div>
+
+
+</body>
+<script>
+
+
+
+  let date= new Date()
+  document.getElementById('month').value=date.getMonth()+1
+  document.getElementById('year').value=date.getFullYear()
+
+  function task(m, y)
+  {
+    m=m-1
+    let table='<table><tr><th>mon</th><th>tue</th><th>wed</th><th>thu</th><th>fri</th><th>sut</th><th>sun</th></tr><tr>'
+    date.setMonth(m)
+    date.setFullYear(y)
+    date.setDate(1)
+
+    console.log(date.getDay())  // так как неделя у нас начинается не с воскресения а с понедельника
+    if (date.getDay()===0)
+    {
+      for(let i=0;i<6;i++)
+      {
+
+        table+='<td></td>'
+      }
+    }
+
+    for(let i=0;i<date.getDay()-1;i++)
+    {
+
+      table+='<td></td>'
+    }
+    while(date.getMonth()===m)
+    {
+      table+='<td>'+date.getDate()+'</td>'
+      if (date.getDay()===0)
+      {
+        table+='<tr></tr>'
+      }
+
+      date.setDate(date.getDate()+1)
+    }
+    date.setDate(date.getDate()-1)
+    if (date.getDay()!==0)
+    {
+      for (let i=date.getDay();i<7;i++)
+      {
+
+        table+='<td></td>'
+      }
+    }
+
+    table+='</tr></table>'
+    document.getElementById('res').innerHTML=table
+
+  }
+  document.getElementById('resBut').addEventListener('click',function (){task(+document.getElementById('month').value,document.getElementById('year').value)})
+</script>
+</html>
